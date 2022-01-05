@@ -1,5 +1,6 @@
 import random
 import os
+import time
 
 def read():
     words = []
@@ -28,9 +29,9 @@ def initialize(word_random):
 def process(initialize_dict):
     sep_word_random = initialize_dict[0]
     missing_letters = initialize_dict[1]
-    
+    error = 0
 
-    while missing_letters != sep_word_random:
+    while missing_letters != sep_word_random and error==0:
         os.system("cls")
         print('¡Adivina la palabra!')
 
@@ -38,15 +39,25 @@ def process(initialize_dict):
             print(values + " ", end = "")
 
         print('\n')
-    #Agregar aquí el manejo de errores       
+        
         letter = input('Ingresa una letra: ')
-        letter = letter.upper()
+        try:
+            if letter.isnumeric():
+                raise ValueError("¡Sólo se aceptan letras!")
+                time.sleep(5)
+            else: 
+                letter = letter.upper()
 
-        for key, value in sep_word_random.items():
-            if letter == value:
-                missing_letters[key] = letter
-    
+                for key, value in sep_word_random.items():
+                    if letter == value:
+                        missing_letters[key] = letter
+        except ValueError as ve:
+            print(ve)
+            time.sleep(3)
+
     return missing_letters
+
+
    
     
 def end(word_random):
