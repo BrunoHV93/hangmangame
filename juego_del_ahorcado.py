@@ -118,17 +118,12 @@ def end(word_random):
     return play_again
 
 
-
-
-
-    
-
 def run():
 
     play_again = 1
 
     welcome_screen()
-
+    
 #This while function is used to give the user the option to play again or exit the game.
     while play_again == 1:
         words = read()
