@@ -117,7 +117,7 @@ def end(word_random):
 
     return play_again
 
-
+#This function contains the program flow, it executes all the functions needed to make the game work.
 def run():
 
     play_again = 1
